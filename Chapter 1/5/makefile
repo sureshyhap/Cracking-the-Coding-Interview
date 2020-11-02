@@ -1,4 +1,4 @@
-5: 5.o
-	g++ -o 5 5.o
-5.o: 5.cpp
-	g++ -c 5.cpp
+five: five.o
+	g++ -o five five.o
+five.o: five.cpp
+	g++ -c five.cpp
