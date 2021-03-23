@@ -1,0 +1,78 @@
+#include <iostream>
+
+template <typename T>
+class TripleStack {
+public:
+  void push(int which_stack, T item);
+  void pop(int which_stack);
+  T top(int which_stack);
+private:
+  static const int SIZE = 10;
+  T a[SIZE] = {};
+  static const int min_first = 0;
+  static const int max_first = SIZE / 3;
+  static const int min_second = max_first;
+  static const int max_second = SIZE * 2 / 3;
+  static const int min_third = max_second;
+  static const int max_third = SIZE;
+  int size_first = 0;
+  int size_second = 0;
+  int size_third = 0;
+};
+
+template <typename T>
+void TripleStack<T>::push(int which_stack, T item) {
+  switch (which_stack) {
+  case 0:
+    if (min_first + size_first == max_first) {
+      return;
+    }
+    a[min_first + size_first++] = item;
+    break;
+  case 1:
+    if (min_second + size_second == max_second) {
+      return;
+    }
+    a[min_second + size_second++] = item;
+    break;
+  case 2:
+    if (min_third + size_third == max_third) {
+      return;
+    }
+    a[min_third + size_third++] = item;
+    break;
+  }
+}
+
+template <typename T>
+void pop(int which_stack) {
+  switch (which_stack) {
+  case 0:
+    if (!size_first) {
+      return;
+    }
+    --size_first;
+    break;
+  }
+  case 1:
+    if (!size_second) {
+      return;
+    }
+    --size_second;
+    break;
+  case 2:
+    if (!size_third) {
+      return;
+    }
+    --size_third;
+    break;
+}
+
+template <typename T>
+T top(int which_stack) {
+
+}
+
+int main(int argc, char* argv[]) {
+  return 0;
+}
